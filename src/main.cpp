@@ -14,6 +14,15 @@ int main(int argc, char** argv) {
     int iterations = 10;
     if (argc >= 3) iterations = std::stoi(argv[2]);
 
-
+    try {
+        Grid g = Grid::fromFile(path);
+        auto rules = std::make_unique<ConwayRule>();
+        auto renderer = std::make_unique<ConsoleRenderer>();
+        Game game(std::move(g), std::move(rules), std::move(renderer));
+        game.runConsole(iterations);
+    } catch (const std::exception& ex) {
+        std::cerr << "Erreur: " << ex.what() << "\n";
+        return 2;
+    }
     return 0;
 }
