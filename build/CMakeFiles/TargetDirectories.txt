@@ -1,0 +1,4 @@
+/mnt/c/Users/a054865/OneDrive - Alliance/Documents/Project/build/CMakeFiles/game_of_life.dir
+/mnt/c/Users/a054865/OneDrive - Alliance/Documents/Project/build/CMakeFiles/tests.dir
+/mnt/c/Users/a054865/OneDrive - Alliance/Documents/Project/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/a054865/OneDrive - Alliance/Documents/Project/build/CMakeFiles/rebuild_cache.dir
