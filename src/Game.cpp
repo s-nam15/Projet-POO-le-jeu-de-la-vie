@@ -6,25 +6,31 @@
 #include "GUIView.h"
 
 namespace fs = std::filesystem;
-
-Game::Game(int iter, int mode, const std::string& input)
-    : grid(nullptr), rule(nullptr), iterations(iter), 
-      currentIteration(0), mode(mode), inputFile(input), previousGrid(nullptr) {
+ 
+//Initialisation des variables membres
+Game::Game(int iter, int mode, const std::string& input, int speed)
+    : grid(nullptr), previousGrid(nullptr), rule(nullptr),
+      iterations(iter), currentIteration(0),
+      mode(mode), inputFile(input), speedMS(speed)
+{
     rule = new ConwayRule();
 }
 
+// Nettoyage des objets 
 Game::~Game() {
     delete grid;
     delete rule;
     delete previousGrid;
 }
 
+//chargement de l'état initial du jeu à partir du fichier spécifique 
 void Game::loadGame() {
     grid = new Grid();
     grid->loadFile(inputFile);
     std::cout << "Grille chargee: " << grid->getRows() << "x" << grid->getCols() << std::endl;
 }
 
+//Execution en mode console 
 void Game::runConsole() {
     ConsoleView view;
     view.setGame(this);
@@ -69,6 +75,7 @@ void Game::runConsole() {
     std::cout << "Resultats sauvegardes dans: " << outputDir << std::endl;
 }
 
+//Execution en mode graphique
 void Game::runGraphic() {
     GUIView view;
     view.setGame(this);

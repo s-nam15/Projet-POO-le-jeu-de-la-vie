@@ -14,13 +14,13 @@ void GUIView::render() {
     if (!grid) return;
     
     // Taille d'une cellule en pixels
-    int cellSize = 200;
+    int cellSize = 20;
     int windowWidth = grid->getCols() * cellSize;
     int windowHeight = grid->getRows() * cellSize;
     
     // Créer la fenêtre
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Jeu de la Vie - Conway");
-    window.setFramerateLimit(2); // 2 images/seconde pour bien voir
+    window.setFramerateLimit(10); // 2 images/seconde pour bien voir
     
     Grid* previousGrid = nullptr;
     
@@ -50,6 +50,8 @@ void GUIView::render() {
             
             std::cout << "Iteration: " << game->getCurrentIteration() << std::endl;
             
+             sf::sleep(sf::milliseconds(100));
+
             // Vérifier stabilité
             if (previousGrid && grid->isEqual(*previousGrid)) {
                 std::cout << "Grille stabilisee !" << std::endl;
@@ -75,7 +77,7 @@ void GUIView::render() {
                 if (cell && cell->isAlive()) {
                     cellShape.setFillColor(sf::Color::Black);
                 } else {
-                    cellShape.setFillColor(sf::Color(0, 0, 0));
+                    cellShape.setFillColor(sf::Color(190, 190, 190));
                 }
                 
                 window.draw(cellShape);
