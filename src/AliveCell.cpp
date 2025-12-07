@@ -3,5 +3,5 @@
 AliveCell::AliveCell() : Cell(true) {}
 
 Cell* AliveCell::clone() const {
-    return new AliveCell(*this);
+    return new AliveCell(*this); // *this = soi-même
 }

@@ -3,5 +3,5 @@
 DeadCell::DeadCell() : Cell(false) {}
 
 Cell* DeadCell::clone() const {
-    return new DeadCell(*this);
+    return new DeadCell(*this); // *this = soi-même
 }

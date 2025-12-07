@@ -5,15 +5,18 @@
 #include <stdexcept>
 #include <iostream>
 
-Grid::Grid() : rows(0), cols(0) {}
+Grid::Grid() : rows(0), cols(0) {} // Grille vide
 
 Grid::Grid(int rows, int cols) : rows(rows), cols(cols) {
-    cells.reserve(rows * cols);
-    for (int i = 0; i < rows * cols; ++i) {
-        cells.push_back(new DeadCell());
+    cells.reserve(rows * cols); // Réserver la capacité dans mémoire à l'avance pour efficace
+    
+    // Créer une grille initiale remplie de DeadCell
+    for (int i = 0; i < rows * cols; i++) {
+        cells.push_back(new DeadCell()); 
     }
 }
 
+// Destructeur pour éviter la fuite de mémoire
 Grid::~Grid() {
     for (Cell* cell : cells) {
         delete cell;
@@ -21,6 +24,7 @@ Grid::~Grid() {
     cells.clear();
 }
 
+// Calcule de l'indice de cellule pour obtenir la position
 int Grid::getIndex(int row, int col) const {
     return row * cols + col;
 }
@@ -32,6 +36,7 @@ int Grid::getRows() const {
 int Grid::getCols() const {
     return cols;
 }
+
 
 Cell* Grid::getCell(int row, int col) const {
     if (row < 0 || row >= rows || col < 0 || col >= cols) {

@@ -17,8 +17,8 @@ private:
                                             (2,0) (2,1) (2,2) (2,3)
                                             (3,0) (3,1) (3,2) (3,3)
                                             getIndex(2,1) -> 2*4+1 = 9
-                                            cells[9] = (2,1) 
-                                            Simulaire de table de hachage mais non
+                                            Grâce à l'indice : cells[9] = (2,1) 
+                                            Simulaire de table de hachage mais non (Pas notion de clé et valeur)
                                             */
 
 public:
@@ -32,7 +32,10 @@ public:
     // Getters
     int getRows() const;
     int getCols() const;
-    Cell* getCell(int row, int col) const;
+    Cell* getCell(int row, int col) const; /*Pour modifier les cellules aux positions row et col (ex.: Cell* cell = grid->getCell(1, 2);
+                                                                                                       cell->setNextState(true);
+                                                                                                       cell->updateState(); )
+                                                                                                       */
 
     // Nombre de cellules vivantes parmi les 8 cellules voisines
     int countAliveNeighbors(int row, int col) const;
