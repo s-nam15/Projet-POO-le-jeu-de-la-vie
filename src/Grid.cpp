@@ -75,29 +75,34 @@ void Grid::update() {
 }
 
 void Grid::loadFile(const std::string& path) {
-    std::ifstream file(path);
+    std::ifstream file(path); // Essayer d'ouvrir le fichier "grid_glider.txt" selon grid->loadFile(inputFile); dans méthode loadGame() dans Game
     if (!file.is_open()) {
         throw std::runtime_error("Impossible d'ouvrir le fichier");
     }
-    file >> rows >> cols;
+    file >> rows >> cols; // Lire la ligne et la colonne (ex.: 20 20)
     if (rows <= 0 || cols <= 0) {
         throw std::runtime_error("Dimensions invalides");
     }
+
+    // Supprimer les cellules existantes
     for (Cell* cell : cells) {
         delete cell;
     }
     cells.clear();
+
     cells.reserve(rows * cols);
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
+
+    // Lire les cellules
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
             int state;
             if (!(file >> state)) {
                 throw std::runtime_error("Erreur de lecture");
             }
-            if (state == 1) {
-                cells.push_back(new AliveCell());
-            } else {
-                cells.push_back(new DeadCell());
+            if (state == 1) { // Si la cellule est 1
+                cells.push_back(new AliveCell()); // Changer à AliveCell et enregistrer(push_back) dans la grille
+            } else { // Si la cellule est 0
+                cells.push_back(new DeadCell()); // Changer à DeadCell et enregistrer(push_back) dans la grille
             }
         }
     }

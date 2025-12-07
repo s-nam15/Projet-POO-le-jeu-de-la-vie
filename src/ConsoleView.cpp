@@ -14,7 +14,7 @@ void ConsoleView::printToConsole() {
     if (!game) return;
     Grid* grid = game->getGrid();
     if (!grid) return;
-    std::cout << "\n=== Iteration " << game->getCurrentIteration() << " ===" << std::endl;
+    std::cout << "\n=== Itération(s) " << game->getCurrentIteration() << " ===" << std::endl;
     for (int i = 0; i < grid->getRows(); ++i) {
         for (int j = 0; j < grid->getCols(); ++j) {
             Cell* cell = grid->getCell(i, j);

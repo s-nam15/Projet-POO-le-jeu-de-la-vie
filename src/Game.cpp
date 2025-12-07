@@ -9,7 +9,7 @@ namespace fs = std::filesystem;
 
 Game::Game(int iter, int mode, const std::string& input)
     : grid(nullptr), rule(nullptr), iterations(iter), 
-      currentIteration(0), mode(mode), inputFile(input), previousGrid(nullptr) {
+      currentIteration(0), mode(mode), inputFile(input), previousGrid(nullptr) { // inputFile = "grid_glider.txt"
     rule = new ConwayRule();
 }
 
@@ -19,10 +19,11 @@ Game::~Game() {
     delete previousGrid;
 }
 
+// Création d'objet Grid et lire les états de la grille dans fichier "grid_glider.txt"
 void Game::loadGame() {
     grid = new Grid();
-    grid->loadFile(inputFile);
-    std::cout << "Grille chargee: " << grid->getRows() << "x" << grid->getCols() << std::endl;
+    grid->loadFile(inputFile); // Lire le fichier "grid_glider.txt" et la grille chargée stocke dans le Game
+    std::cout << "Grille chargée: " << grid->getRows() << "x" << grid->getCols() << std::endl; // ex) Grille chargée: 20x20
 }
 
 void Game::runConsole() {

@@ -16,22 +16,22 @@ int main(int argc, char* argv[]) {
         return 1;
     }
  
-    std::string inputFile = argv[1];
-    int mode = std::stoi(argv[2]);
-    int iterations = std::stoi(argv[3]);
+    std::string inputFile = argv[1]; // "grid_glider.txt"
+    int mode = std::stoi(argv[2]); // Mode 
+    int iterations = std::stoi(argv[3]); // Itération(s)
  
     if (mode != 0 && mode != 1) {
-        std::cerr << "Mode doit être 0 ou 1" << std::endl;
+        std::cerr << "Mode doit être 0 (Console) ou 1 (Graphique)" << std::endl;
         return 1;
     }
  
     if (iterations <= 0) {
-        std::cerr << "Itérations > 0" << std::endl;
+        std::cerr << "Itération(s) doit être au moins 1" << std::endl;
         return 1;
     }
  
     try {
-        Game game(iterations, mode, inputFile);
+        Game game(iterations, mode, inputFile); 
         game.loadGame();
         game.run();
     } catch (const std::exception& e) {

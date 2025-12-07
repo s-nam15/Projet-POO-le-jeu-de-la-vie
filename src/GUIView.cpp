@@ -10,7 +10,7 @@ GUIView::GUIView() : View() {}
 void GUIView::render() {
     if (!game) return;
    
-    Grid* grid = game->getGrid();
+    Grid* grid = game->getGrid(); // Rendering en recevant la grille appliquée dans le Game
     if (!grid) return;
    
     // Taille d'une cellule en pixels
@@ -43,21 +43,21 @@ void GUIView::render() {
             if (previousGrid) delete previousGrid;
             previousGrid = grid->clone();
            
-            // Appliquer règles
+            // Appliquer les règles
             grid->applyRules(game->getRule());
             grid->update();
             game->incrementIteration();
            
-            std::cout << "Iteration: " << game->getCurrentIteration() << std::endl;
+            std::cout << "Itération: " << game->getCurrentIteration() << std::endl;
            
-            // Vérifier stabilité
+            // Vérifier la stabilité
             if (previousGrid && grid->isEqual(*previousGrid)) {
                 std::cout << "Grille stabilisee !" << std::endl;
                 sf::sleep(sf::seconds(2));
                 window.close();
             }
         } else {
-            std::cout << "Max iterations" << std::endl;
+            std::cout << "Max itérations" << std::endl;
             sf::sleep(sf::seconds(2));
             window.close();
         }

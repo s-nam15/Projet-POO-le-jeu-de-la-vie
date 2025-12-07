@@ -39,7 +39,7 @@ void verifyGridState(Grid* initial, Grid* expected, int iterations) {
 
 // Test unitaire avec le fichier "grid_glider.txt"
 void testGliderFromTextFile() {
-    std::cout << "Grille de grid_glier.txt applique.." << std::endl;
+    std::cout << "Grille de grid_glier.txt applique..." << std::endl;
 
     Grid* startGrid = new Grid(); // Créer une grille vide
     
